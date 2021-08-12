@@ -120,9 +120,18 @@ export default {
     // })
   },
   mounted() {
-    console.log(this.$refs.aaa);
+    // console.log(this.$refs.aaa);
     this.scroll = new BScroll(document.querySelector('.wrapper'), {
+      probeType: 3,
+      pullUpLoad: true
+    })
 
+    this.scroll.on('scroll', (position) => {
+      // console.log(position);
+    })
+
+    this.scroll.on('pullingUp', () => {
+      console.log('上拉加载更多...');
     })
   }
 }
@@ -134,6 +143,6 @@ export default {
     background-color: pink;
 
     /* overflow: hidden; */
-    overflow-y: scroll;
+    /* overflow-y: scroll; */
   }
 </style>
