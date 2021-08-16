@@ -13,7 +13,7 @@ import GoodsListItem from './GoodsListItem';
     },
     props: {
       goods: {
-        type: Array,
+        // type: Array,
         default() {
           return []
         }
