@@ -17,6 +17,7 @@
      </scroll>
      <detail-bottom-bar @addCart="addToCart"></detail-bottom-bar>
     <back-top @click.native="backClick" v-show="isShowBackTop"/>
+    <toast message="哈哈哈" :show="show"/>
    </div>
 </template>
 
@@ -34,9 +35,10 @@ import BackTop from 'components/content/backTop/BackTop';
 
 import Scroll from 'components/common/scroll/Scroll';
 import GoodsList from 'components/content/goods/GoodsList';
+import Toast from 'components/common/toast/Toast'
 
 import {getDetail, Goods, GoodsParam, Shop, getRecommend} from 'network/detail';
-import {debounce} from 'common/utils';
+// import {debounce} from 'common/utils';
 
    export default {
      name: 'Detail',
@@ -50,6 +52,7 @@ import {debounce} from 'common/utils';
        DetailCommentInfo,
        DetailBottomBar,
        GoodsList,
+       Toast,
        BackTop,
        Scroll
      },
@@ -67,6 +70,8 @@ import {debounce} from 'common/utils';
          getThemTopY: null,
          currentIndex: 0,
          isShowBackTop: false,
+         message: '',
+         show: false
        }
      },
      created() {
@@ -175,9 +180,20 @@ import {debounce} from 'common/utils';
           product.price = this.goods.nowPrice;
           product.iid = this.iid;
           console.log(product);
+
           // 2.添加购物车
           // this.$store.commit('addCart', product)
-          this.$store.dispatch('addCart', product)
+          this.$store.dispatch('addCart', product).then(res => {
+            this.show = true;
+            this.message = res;
+
+            setTimeout(() => {
+              this.show = false;
+              this.message = '';
+            },1500)
+            console.log(res);  // 添加购物车成功
+          })
+         
         }
      }
    }

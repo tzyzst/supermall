@@ -8,9 +8,9 @@
     <span>全选</span>
   </div>
     <div class="count">
-      合计¥:{{totalprice}}
+      合计 ¥: {{totalPrice}}
     </div>
-    <div class="calc">去计算:{{checkLength}}</div>
+    <div class="calculate" @click="calcClick">去计算 : ({{checkLength}})</div>
 </div>
 </template>
 
@@ -21,59 +21,65 @@ export default {
   components: {
     CheckButton
   },
-  data(){
-    return{
-    check: false
-    }
-  },
-  // methods: {
-  //   checkClick(){
-  //     if (this.isSelectAll){
-  //       this.$store.getters.cartList.forEach(item => item.isChecked = false)
-  //     }else {
-  //       this.$store.getters.cartList.forEach(item => item.isChecked = true)
-  //     }
-  //     this.$toast.methods.isShow
+  // data(){
+  //   return{
+  //   check: false
   //   }
   // },
+  methods: {
+    checkClick(){
+      if (this.isSelectAll){  //全部选中
+        this.$store.state.cartList.forEach(item => item.checked = false)
+      } else {
+        this.$store.state.cartList.forEach(item => item.checked = true)
+      }
+      // this.$toast.methods.isShow
+    },
+    calcClick() {
+      if (!this.isSelectAll) {
+        
+      }
+    }
+  },
   computed: {
     cartLength() {
-      return this.$store.state.cartList.length
+      return this.$store.state.cartList.length;
     },
-  //  totalprice(){
-  //     return   this.$store.getters.cartList.filter(item => item.isChecked
-  //     ).reduce((previousValue,item) => {
-  //       return previousValue + item.count * item.price
-  //     },0)
-  //  },
-    checkLength(){
-      return this.$store.state.cartList.filter(item => item.isChecked).reduce((previousValue,item) => {
+   totalPrice() {
+      return this.$store.state.cartList.filter(item => item.checked).reduce((previousValue,item) => {
+        return previousValue + item.price * item.count
+      },0).toFixed(2)
+   },
+    checkLength() {
+      return this.$store.state.cartList.filter(item => item.checked).reduce((previousValue,item) => {
         return previousValue + item.count
       },0)
-    // },
-  //   isSelectAll(){
-  //     if (this.$store.state.cartList.length === 0) {
-  //       return false
-  //     }else {
-  //       return !(this.$store.state.cartList.filter(item => !item.isChecked).length)
-  //       }
-      // return !(this.$store.state.cartList.filter(item => !item.isChecked).length)
-      // return !this.cartList.find(item => !item.isChecked)
-      // let isChecked = false;
+    },
+      isSelectAll() {
+      // 法1 filter
+      // if (this.$store.state.cartList.length === 0) return false
+      // return !(this.$store.state.cartList.filter(item => !item.checked).length)
+     
+      // 法2 find (此法的性能高一点)
+      if (this.$store.state.cartList.length === 0) return false
+      return !this.$store.state.cartList.find(item => !item.checked)
+
+      // 法3 普通遍历
+      // if (this.$store.state.cartList.length === 0) return false
       // for (let item of this.cartList){
-      //   if (!item.isChecked){
-      //     isChecked = false
+      //   if (!item.checked){
       //     return isChecked
       //   }
       // }
+      // return true
 
     }
-  },
+  }
  }
 </script>
 
 <style scoped>
-.bottom-bar{
+.bottom-bar {
   background-color: #dbe5ec;
   position: absolute;
   bottom: 50px;
@@ -81,27 +87,28 @@ export default {
   height: 40px;
   line-height: 40px;
 }
-.check-button{
+.check-button {
   width: 20px;
   height: 20px;
    line-height: 20px;
   margin-right: 10px;
 }
-.check-content{
+.check-content {
   display: flex;
   align-items: center;
   font-size: 13px;
   margin-left: 10px;
   width: 60px;
 }
-.count{
+.count {
   color: #ff5777;
   padding-left: 50px;
+  margin: 0 30px;
   flex: 1;
   font-size: 13px;
 }
-.calc{
- width: 90px;
+.calculate {
+  width: 90px;
   color: white;
   text-align: center;
   background-color: #ff8198;
