@@ -1,12 +1,12 @@
 <template>
 <div class="bottom-bar">
-  <div class="check-content">
-    <check-button
-      class="check-button"
-      :is-checked="isSelectAll"
-    @click.native="checkClick"></check-button>
-    <span>全选</span>
-  </div>
+    <div class="check-content">
+      <check-button
+        class="check-button"
+        :is-checked="isSelectAll"
+      @click.native="checkClick"></check-button>
+      <span>全选</span>
+    </div>
     <div class="count">
       合计 ¥: {{totalPrice}}
     </div>
@@ -80,8 +80,7 @@ export default {
 
 <style scoped>
 .bottom-bar {
-  background-color: #dbe5ec;
-  position: absolute;
+  background-color: #eee;
   bottom: 50px;
   display: flex;
   height: 40px;
