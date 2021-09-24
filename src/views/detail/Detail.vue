@@ -17,7 +17,7 @@
      </scroll>
      <detail-bottom-bar @addCart="addToCart"></detail-bottom-bar>
     <back-top @click.native="backClick" v-show="isShowBackTop"/>
-    <toast message="哈哈哈" :show="show"/>
+    <toast message="添加购物车成功~" :show="show"/>
    </div>
 </template>
 
