@@ -80,8 +80,10 @@ export default {
 
 <style scoped>
 .bottom-bar {
+  position: relative;
   background-color: #eee;
-  bottom: 50px;
+  /* bottom: 50px; */
+  /* top: 50px; */
   display: flex;
   height: 40px;
   line-height: 40px;
