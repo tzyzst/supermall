@@ -1,7 +1,7 @@
 <template>
 <!-- ref/children -->
    <div class="wrapper" ref="wrapper">
-     <div class="content">
+     <div>
         <slot></slot>
      </div>
    </div>

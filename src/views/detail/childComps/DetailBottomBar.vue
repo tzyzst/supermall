@@ -33,13 +33,14 @@ export default {
 </script>
 
 <style scoped>
-.detail-bottom{
-  height: 58px;
-  position: absolute;
+.detail-bottom {
+  height: 55px;
+  /* position: absolute; */
+  position: relative;
   background-color: #fff;
-  left: 0;
+  /* left: 0;
   right: 0;
-  bottom: 0;
+  bottom: 0; */
   display: flex;
   text-align: center;
 }
@@ -60,7 +61,7 @@ export default {
   display: block;
   width: 22px;
   height: 22px;
-  margin: 10px auto 3px;
+  margin: 8px auto 1px;
   background: url("~assets/img/detail/detail_bottom.png") 0 0/100%;
 }
 
@@ -75,7 +76,7 @@ export default {
 .bar-right {
   font-size: 15px;
   color: #fff;
-  line-height: 58px;
+  line-height: 55px;
 }
 
 .bar-right .cart {

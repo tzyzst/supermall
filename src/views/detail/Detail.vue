@@ -211,7 +211,7 @@ import {getDetail, Goods, GoodsParam, Shop, getRecommend} from 'network/detail';
     background-color: #fff;
   }
   .content {
-    height: calc(100vh - 44px );
+    height: calc(100vh - 44px - 60px);
     overflow: hidden;
   }
 </style>

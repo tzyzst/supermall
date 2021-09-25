@@ -29,6 +29,9 @@ export default {
 </script>
 
 <style scoped>
+  .cart {
+    height: 100vh;
+  }
   .nav-bar {
     color: #fff;
     background-color: var(--color-tint);
