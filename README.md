@@ -1,5 +1,5 @@
 # supermall
-# this project from coderwhy !!!
+# this project from coderwhy !
 
 ## Project setup
 ```
