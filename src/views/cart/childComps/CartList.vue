@@ -34,7 +34,7 @@
     height: calc(100% - 44px -58px -40px);
   }
   .content {
-    height: 600px;
+    height: 100%;
     overflow: hidden;
   }
 </style>
