@@ -142,7 +142,7 @@ export default {
     height: 150px;
     background-color: pink;
 
-    /* overflow: hidden; */
+    overflow: hidden;
     /* overflow-y: scroll; */
   }
 </style>

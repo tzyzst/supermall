@@ -1,5 +1,4 @@
 <template>
-
    <div class="cart-list">
      <scroll class="content" ref="scroll">
        <cart-list-item v-for="(item, index) in cartListItem" :key="index" :item-info="item">
@@ -12,7 +11,7 @@
 </template>
 
 <script>
-  import Scroll from 'components/common/scroll/Scroll'
+  import Scroll from 'components/common/scroll/Scroll';
   import CartListItem from './CartListItem';
    export default {
      name: 'CartList',
@@ -32,12 +31,10 @@
 
 <style scoped>
   .cart-list {
-    /* position: relative; */
     height: calc(100% - 44px -58px -40px);
   }
   .content {
-    /* height: calc(100% - 44px -58px -40px); */
-    height: 100%;
+    height: 600px;
     overflow: hidden;
   }
 </style>
