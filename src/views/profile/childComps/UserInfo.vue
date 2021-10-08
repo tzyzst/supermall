@@ -49,9 +49,9 @@
   .user-icon img {
     position: absolute;
     width: 60px;
-    height: 30px;
+    height: 33px;
     left: 30px;
-    top: 65px;
+    top: 60px;
   }
   .icon-info {
     display: flex;

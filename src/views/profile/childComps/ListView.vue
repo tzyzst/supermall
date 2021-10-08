@@ -49,7 +49,7 @@
     border-bottom: 1px solid rgba(100, 100, 100, .1);
     padding-left: 5px;
   }
-  .item:last-of-type .info {
+  /* .item:last-of-type .info {
     border-bottom: none;
-  }
+  } */
 </style>

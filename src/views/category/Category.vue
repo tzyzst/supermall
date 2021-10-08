@@ -1,12 +1,12 @@
 <template>
-  <div class="wrapper" ref="aaa">
+  <div class="wrapper">
 
     <nav-bar class="nav-bar">
       <div slot="center">分类</div>
     </nav-bar>
 
     <scroll class="content" ref="scroll">
-      <ul>
+      <!-- <ul>
         <li>分类列表1</li>
         <li>分类列表1</li>
         <li>分类列表2</li>
@@ -107,7 +107,7 @@
         <li>分类列表97</li>
         <li>分类列表98</li>
         <li>分类列表99</li>
-     </ul>
+     </ul> -->
     </scroll>
     
   </div>
@@ -116,7 +116,7 @@
 <script>
   import Scroll from 'components/common/scroll/Scroll';
   import NavBar from "components/common/navbar/NavBar";
-
+  import {getCategory, getSubcategory, getCategoryDetail} from "network/category";
 export default {
   name: 'Category',
   // data() {
@@ -126,6 +126,9 @@ export default {
   // },
   components: {
     Scroll,NavBar
+  },
+  created() {
+    // this.getCategory()
   }
 }
 </script>
@@ -134,7 +137,7 @@ export default {
   .content {
     height: 100%;
     background-color: rgb(238, 215, 218);
-    /* overflow: hidden; */
+    overflow: hidden;
   }
   .nav-bar {
   color: #fff;
