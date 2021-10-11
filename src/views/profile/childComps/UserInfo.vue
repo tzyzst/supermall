@@ -19,7 +19,7 @@
           </div>
         </div>
       </div>
-      <div class="gt"></div>
+      <div class="triangle"></div>
     </a>
   </div>
 </template>
@@ -84,7 +84,7 @@
   .login-info {
     color: #fff;
   }
-  .gt {
+  .triangle {
      width: 12px;
      height: 12px;
      border-top: 2px solid #ffffff;
