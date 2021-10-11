@@ -15,11 +15,11 @@
             <span>
               <img src="~assets/img/profile/phone.svg" alt="">
             </span>
-            <div name="user-phone">暂无绑定手机号</div>
+            <div name="user-phone" class="phonenum">暂无绑定手机号</div>
           </div>
         </div>
       </div>
-      <div>&gt;</div>
+      <div class="gt"></div>
     </a>
   </div>
 </template>
@@ -32,7 +32,8 @@
 
 <style scoped>
   #user-info {
-    background-color: rgb(248, 227, 231);
+    background-color: rgb(253, 171, 178);
+    /* background-color: var(--color-tint); */
     padding: 15px;
     margin-top: -5px;
   }
@@ -49,8 +50,8 @@
   .user-icon img {
     position: absolute;
     width: 60px;
-    height: 33px;
-    left: 30px;
+    height: 60px;
+    left: 20px;
     top: 60px;
   }
   .icon-info {
@@ -78,6 +79,19 @@
     width: 21px;
     height: 21px;
     left: -20px;
-    top: 0;
+    top: -2px;
+  }
+  .login-info {
+    color: #fff;
+  }
+  .gt {
+     width: 12px;
+     height: 12px;
+     border-top: 2px solid #ffffff;
+     border-right: 2px solid #ffffff;
+     transform: rotate(45deg);
+  }
+  .phonenum {
+    font-size: 16px;
   }
 </style>

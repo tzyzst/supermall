@@ -74,9 +74,11 @@ export default {
     background-color: #fff;
     margin-right: 1px;
     text-align: center;
+    border-right: 1px solid pink;
   }
   .account-item:last-of-type {
     margin-right: 0;
+    border-right:none
   }
   .account-item {
     color: var(--color-high-text);
