@@ -51,7 +51,7 @@ export default {
           {src: require('../../assets/img/profile/vip.svg'), info: '会员卡'},
         ],
         serviceList: [
-          {src:require('../../assets/img/profile/shopping.svg'), info: '购物车'},
+          {src:require('../../assets/img/profile/cart.svg'), info: '购物车'},
           {src:require('../../assets/img/profile/shopping.svg'), info: '下载购物APP'},
         ]
       }
