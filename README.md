@@ -1,8 +1,7 @@
 # supermall
 # this project from coderwhy !
 
-首页
-![Image text](https://raw.githubusercontent.com/tzyzst/supermall/main/src/display/cart.png)
+<!-- ![Image text](https://raw.githubusercontent.com/tzyzst/supermall/main/src/display/cart.png) -->
 
 ## Project setup
 ```
