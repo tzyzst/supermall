@@ -37,7 +37,7 @@
        itemClick(index) {
         this.currentIndex = index;
         // console.log(this.currentIndex);
-        this.$emit('tabClick', index)
+        this.$emit('tabClickLeft', index)
       }
      }
    }

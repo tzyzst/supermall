@@ -12,7 +12,7 @@
       </div>
 
       <div class="goodsBottom">
-        <tab-control :titles="['综合', '新品', '销量']" />
+        <tab-control :titles="['综合', '新品', '销量']" @tabClick="tabClickRight"/>
 
         <goods-list :goods="showGoods" style="width:100%"/>
       </div>
@@ -34,6 +34,11 @@ export default {
     GoodsList,
     TabControl,
   },
+  data() {
+    return {
+      currentType: 'pop'
+    }
+  },
   props: {
     products: {
       type: Array,
@@ -48,7 +53,23 @@ export default {
       },
     },
   },
-  methods: {},
+  methods: {
+    tabClickRight(index) {
+      // console.log(index);
+      switch (index) {
+        case 0:
+          this.currentType = 'pop'
+          break
+        case 1:
+          this.currentType = 'new'
+          break
+        case 2:
+          this.currentType = 'sell'
+          break
+      }
+      this.$emit('IfType', this.currentType)
+    }
+  }
 };
 </script>
 
@@ -67,10 +88,10 @@ export default {
 #CategoryRight img {
   display: block;
   width: 75%;
-  margin: 5px auto;
+  margin: 8px auto;
 }
 .goods {
-  width: 50%;
+  width: 33%;
 }
 .goodsBottom {
   width: 100%;

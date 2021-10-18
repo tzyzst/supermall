@@ -6,8 +6,8 @@
     </nav-bar>
 
     <div class="leftRight">
-      <category-left :titles="categoryLists" @tabClick="tabClick"/>
-      <category-right :products="showUpGoods" :showGoods="showBottomGoods"/>
+      <category-left :titles="categoryLists" @tabClickLeft="tabClickLeft"/>
+      <category-right :products="showUpGoods" :showGoods="showBottomGoods" @IfType="IfType"/>
     </div>
   
   </div>
@@ -30,7 +30,10 @@ export default {
       goodsDataUp: [],
       goodsDatasBottomDetail: [],
       showUpGoods: [],
-      showBottomGoods: []
+      showBottomGoods: [],
+      BottomGoods: [],
+      currentTypeNext: 'pop',
+      indexLeft: 0,
     }
   },
   components: {
@@ -69,10 +72,10 @@ export default {
   methods: {
     getCategory() {
       getCategory().then(res => {
-        // 1.分类页面的全部数据
+        // 1.分类页面左侧的标题数据、网络请求所需全部的参数
         this.categoryLists = res.data.category.list;
 
-        // 获取网络请求所需要的参数
+        // // 获取网络请求所需要的参数
         for (let i = 0; i < this.categoryLists.length; i++) {
           this.maitKeyArray[i] = this.categoryLists[i].maitKey;
           this.miniWallkeyArray[i] = this.categoryLists[i].miniWallkey;
@@ -90,15 +93,35 @@ export default {
              this.goodsDatasBottomDetail[i] = res;
             //  下部的默认显示数据
              this.showBottomGoods = this.goodsDatasBottomDetail[0];
+             this.BottomGoods = this.goodsDatasBottomDetail[0];
           })
         }
       })
     },
     
-    // //* 点击上下切换相关*//
-    tabClick(index) {
+    // 点击上下切换
+    tabClickLeft(index) {
       this.showUpGoods = this.goodsDataUp[index];
+     
+     
+      // if (this.currentTypeNext !== 'pop') {
+      //     console.log(113);
+      //      this.showBottomGoods = this.BottomGoods;
+      //   }
+      
       this.showBottomGoods = this.goodsDatasBottomDetail[index];
+      // 将index传入到IfType中
+      this.indexLeft = index;
+    },
+
+    IfType(currentType) {
+      console.log(currentType);
+      // console.log(this.miniWallkeyArray);
+      this.currentTypeNext = currentType;
+      getCategoryDetail(this.miniWallkeyArray[this.indexLeft],this.currentTypeNext).then(res => {
+        // console.log(res);
+        this.showBottomGoods = res;
+      })
     }
   }
 }

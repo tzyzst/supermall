@@ -27,7 +27,10 @@ const routes = [
     },
     {
       path: '/category',
-      component: Category
+      component: Category,
+      meta: {
+        keepAlive: false
+      }
     },
     {
       path: '/profile',
