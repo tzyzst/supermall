@@ -1,7 +1,13 @@
 # supermall
 # this project from coderwhy !
 
-<!-- ![Image text](https://raw.githubusercontent.com/tzyzst/supermall/main/src/display/cart.png) -->
+![Image text](https://raw.githubusercontent.com/tzyzst/supermall/main/src/display/home.png)
+![Image text](https://raw.githubusercontent.com/tzyzst/supermall/main/src/display/goods.png)
+![Image text](https://raw.githubusercontent.com/tzyzst/supermall/main/src/display/detail.png)
+![Image text](https://raw.githubusercontent.com/tzyzst/supermall/main/src/display/cart.png)
+![Image text](https://raw.githubusercontent.com/tzyzst/supermall/main/src/display/category.png)
+![Image text](https://raw.githubusercontent.com/tzyzst/supermall/main/src/display/profile.png)
+
 
 ## Project setup
 ```
