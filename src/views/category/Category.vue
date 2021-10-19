@@ -93,16 +93,16 @@ export default {
              this.goodsDatasBottomDetail[i] = res;
             //  下部的默认显示数据
              this.showBottomGoods = this.goodsDatasBottomDetail[0];
-             this.BottomGoods = this.goodsDatasBottomDetail[0];
+            //  this.BottomGoods = this.goodsDatasBottomDetail[0];
           })
         }
       })
     },
-    
+
     // 点击上下切换
     tabClickLeft(index) {
       this.showUpGoods = this.goodsDataUp[index];
-     
+     console.log(this.miniWallkeyArray[index]);
      
       // if (this.currentTypeNext !== 'pop') {
       //     console.log(113);
@@ -113,6 +113,8 @@ export default {
       // 将index传入到IfType中
       this.indexLeft = index;
     },
+
+
 
     IfType(currentType) {
       console.log(currentType);
