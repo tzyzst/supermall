@@ -1,22 +1,22 @@
 <template>
-  <scroll class="content">
+  <scroll class="content" :probe-type="3" @scroll="contentScroll">
     <div id="CategoryRight">
+
+      <tab-control class="goodsBottom Fixed" v-show="isTabFixed" :titles="['综合', '新品', '销量']" @tabClick="tabClickRight" ref="tabTop"/>
 
       <div class="goods" v-for="(item, index) in products" :key="index">
         <div class="picture">
           <a :href="item.link">
-            <img :src="item.image" alt="" />
+            <img :src="item.image" alt="" @load="upImageLoad"/>
             {{ item.title }}
           </a>
         </div>
       </div>
 
-      <div class="goodsBottom">
-        <tab-control :titles="['综合', '新品', '销量']" @tabClick="tabClickRight"/>
+      <tab-control class="goodsBottom" :titles="['综合', '新品', '销量']" @tabClick="tabClickRight" ref="tabTop"/>
 
-        <goods-list :goods="showGoods" style="width:100%"/>
-      </div>
-      
+      <goods-list :goods="showGoods" style="width:100%"/>
+    
       
     </div>
   </scroll>
@@ -36,7 +36,9 @@ export default {
   },
   data() {
     return {
-      currentType: 'pop'
+      currentType: 'pop',
+      tabOffsetTop: 0,
+      isTabFixed: false
     }
   },
   props: {
@@ -68,6 +70,20 @@ export default {
           break
       }
       this.$emit('IfType', this.currentType)
+    },
+
+    // 1. 等待图片加载完成，取到真实的距离
+    upImageLoad() {
+      // console.log(this.$refs.tabTop.$el.offsetTop);
+      this.tabOffsetTop = this.$refs.tabTop.$el.offsetTop;
+    },
+
+    // 2.判断 返回顶部 要隐藏的距离
+    // 记得侦测scroll的 :probe-type="3"
+    contentScroll(position) {
+      // console.log(position);
+      // 决定tabControl是否吸顶(position: fixed)
+      this.isTabFixed = (-position.y) > this.tabOffsetTop;
     }
   }
 };
@@ -89,6 +105,12 @@ export default {
   display: block;
   width: 75%;
   margin: 8px auto;
+}
+.Fixed {
+  background-color: pink;
+  position: fixed;
+  top: 0;
+  left: 0;
 }
 .goods {
   width: 33%;
