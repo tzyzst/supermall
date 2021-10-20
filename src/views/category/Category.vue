@@ -41,45 +41,18 @@ export default {
   },
   created() {
     //  组件创建后，可以发送网络请求
-    
-    // getCategory().then(res => {
-    //     // 1.分类页面的全部数据
-    //     this.categoryLists = res.data.category.list;
-
-    //     // 获取网络请求所需要的参数
-    //     for (let i = 0; i < this.categoryLists.length; i++) {
-    //       this.maitKeyArray[i] = this.categoryLists[i].maitKey;
-    //       this.miniWallkeyArray[i] = this.categoryLists[i].miniWallkey;
-
-    //     // 2.获取列表上部商品数据
-    //       getSubcategory(this.maitKeyArray[i]).then(res => {
-    //         // console.log(res);
-    //         this.goodsDataUp[i] = res.data.list;
-    //         this.showUpGoods = this.goodsDataUp[0];
-    //       })
-    //     //3. 获取列表下部商品细节详细数据
-    //        getCategoryDetail(this.miniWallkeyArray[i]).then(res => {
-    //         //  console.log(res);
-    //          this.goodsDatasBottomDetail[i] = res;
-    //          this.showBottomGoods = this.goodsDatasBottomDetail[0];
-    //       })
-    //     }
-    //   })
-
-    // 调用getCategory等方法，具体请求写在methods里，用方法封装
+    // 具体请求写在methods里，用方法封装,调用getCategory方法
     this.getCategory();
   },
   methods: {
     getCategory() {
       getCategory().then(res => {
         // 1.分类页面左侧的标题数据、网络请求所需全部的参数
-        this.categoryLists = res.data.category.list;
-
+        this.categoryLists.push(...res.data.category.list) ;
         // // 获取网络请求所需要的参数
         for (let i = 0; i < this.categoryLists.length; i++) {
           this.maitKeyArray[i] = this.categoryLists[i].maitKey;
           this.miniWallkeyArray[i] = this.categoryLists[i].miniWallkey;
-
         // 2.获取列表上部商品数据
           getSubcategory(this.maitKeyArray[i]).then(res => {
             // console.log(res);
@@ -93,32 +66,31 @@ export default {
              this.goodsDatasBottomDetail[i] = res;
             //  下部的默认显示数据
              this.showBottomGoods = this.goodsDatasBottomDetail[0];
-            //  this.BottomGoods = this.goodsDatasBottomDetail[0];
           })
         }
+        //  将带有 [__ob__:observe] 的数据解析成可以遍历的数据，否则在其他函数里不能遍历
+          // JSON.parse(JSON.stringify(this.miniWallkeyArray))
       })
     },
 
     // 点击上下切换
     tabClickLeft(index) {
       this.showUpGoods = this.goodsDataUp[index];
-     console.log(this.miniWallkeyArray[index]);
-     
-      // if (this.currentTypeNext !== 'pop') {
-      //     console.log(113);
-      //      this.showBottomGoods = this.BottomGoods;
-      //   }
+      if (this.currentTypeNext !== 'pop') {
+            getCategoryDetail(this.miniWallkeyArray[index],this.currentTypeNext).then(res => {
+              // console.log(res);
+              this.showBottomGoods = res;
+            })
+        }
       
       this.showBottomGoods = this.goodsDatasBottomDetail[index];
       // 将index传入到IfType中
       this.indexLeft = index;
     },
 
-
-
+  // 左右类型切换
     IfType(currentType) {
       console.log(currentType);
-      // console.log(this.miniWallkeyArray);
       this.currentTypeNext = currentType;
       getCategoryDetail(this.miniWallkeyArray[this.indexLeft],this.currentTypeNext).then(res => {
         // console.log(res);
