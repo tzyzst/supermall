@@ -16,7 +16,7 @@ const store = new Vuex.Store({
       payload.count++
     },
     addToCart(state, payload) {
-      payload.checked = true;
+      payload.checked = true;   // 默认选中购物车商品
       state.cartList.push(payload)
     }
   },

@@ -38,7 +38,7 @@ import GoodsList from 'components/content/goods/GoodsList';
 import Toast from 'components/common/toast/Toast'
 
 import {getDetail, Goods, GoodsParam, Shop, getRecommend} from 'network/detail';
-// import {debounce} from 'common/utils';
+import {debounce} from 'common/utils';
 
    export default {
      name: 'Detail',
@@ -117,38 +117,31 @@ import {getDetail, Goods, GoodsParam, Shop, getRecommend} from 'network/detail';
        getRecommend().then(res => {
         this.recommends = res.data.list
        })
+
       //  4.getThemTopY赋值
-        // this.getThemTopY = debounce(() => {
-        //   this.themeTopYs = [];
-        //   this.themeTopYs.push(0);
-        //   this.themeTopYs.push(this.$refs.params.$el.offsetTop);
-        //   this.themeTopYs.push(this.$refs.comment.$el.offsetTop);
-        //   this.themeTopYs.push(this.$refs.recommend.$el.offsetTop);
-        //   console.log(this.themeTopYs);
-        // }, 1000)
-     },
-      // updated() {
-      //   this.themeTopYs = [];
-      //   this.themeTopYs.push(0);
-      //   this.themeTopYs.push(this.$refs.params.$el.offsetTop);
-      //   this.themeTopYs.push(this.$refs.comment.$el.offsetTop);
-      //   this.themeTopYs.push(this.$refs.recommend.$el.offsetTop);
-      //   console.log(this.themeTopYs);
-      // },
-     methods: {
-       imageLoad() {
-         this.$refs.scroll.refresh();
-        //  this.getThemTopY();
-       },
-       titleClick(index) {
-         this.$refs.scroll.scrollTo(0, -this.themeTopYs[index], 500);
-          // setTimeout(() => {
+        this.getThemTopY = debounce(() => {
           this.themeTopYs = [];
           this.themeTopYs.push(0);
           this.themeTopYs.push(this.$refs.params.$el.offsetTop);
           this.themeTopYs.push(this.$refs.comment.$el.offsetTop);
           this.themeTopYs.push(this.$refs.recommend.$el.offsetTop);
           console.log(this.themeTopYs);
+        }, 500)
+     },
+     methods: {
+       imageLoad() {
+         this.$refs.scroll.refresh();
+         this.getThemTopY();
+       },
+       titleClick(index) {
+         this.$refs.scroll.scrollTo(0, -this.themeTopYs[index], 500);
+          // setTimeout(() => {
+          // this.themeTopYs = [];
+          // this.themeTopYs.push(0);
+          // this.themeTopYs.push(this.$refs.params.$el.offsetTop);
+          // this.themeTopYs.push(this.$refs.comment.$el.offsetTop);
+          // this.themeTopYs.push(this.$refs.recommend.$el.offsetTop);
+          // console.log(this.themeTopYs);
         // }, 100)
        },
        contentScroll(position) {

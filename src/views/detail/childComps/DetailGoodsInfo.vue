@@ -34,7 +34,7 @@
 		  imgLoad(){
         // 判断所有图片都加载完成，再回调
 		    if (++this.counter === this.imagesLength){
-		      this.$emit('imageload')
+		      this.$emit('imageLoad')
         }
       }
     },

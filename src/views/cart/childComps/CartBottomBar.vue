@@ -55,25 +55,26 @@ export default {
         return previousValue + item.count
       },0)
     },
-      isSelectAll() {
-      // 法1 filter
-      // if (this.$store.state.cartList.length === 0) return false
-      // return !(this.$store.state.cartList.filter(item => !item.checked).length)
-     
-      // 法2 find (此法的性能高一点)
-      if (this.$store.state.cartList.length === 0) return false
-      return !this.$store.state.cartList.find(item => !item.checked)
+  //  是否全部选中
+    isSelectAll() {
+    // 法1 filter
+    // if (this.$store.state.cartList.length === 0) return false
+    // return !(this.$store.state.cartList.filter(item => !item.checked).length)
+    
+    // 法2 find (此法的性能高一点)
+    if (this.$store.state.cartList.length === 0) return false
+    return !this.$store.state.cartList.find(item => !item.checked)
 
-      // 法3 普通遍历
-      // if (this.$store.state.cartList.length === 0) return false
-      // for (let item of this.cartList){
-      //   if (!item.checked){
-      //     return isChecked
-      //   }
-      // }
-      // return true
+    // 法3 普通遍历
+    // if (this.$store.state.cartList.length === 0) return false
+    // for (let item of this.cartList){
+    //   if (!item.checked){
+    //     return isChecked
+    //   }
+    // }
+    // return true
 
-    }
+  }
   }
  }
 </script>
