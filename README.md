@@ -3,7 +3,6 @@
                          首页                                               商品
 ![Image text](https://raw.githubusercontent.com/tzyzst/supermall/main/src/display/home.png) 
 ![Image text](https://raw.githubusercontent.com/tzyzst/supermall/main/src/display/goods.png)
-![Image text](https://github.com/tzyzst/supermall/tree/main/src/display/home.png)
 
                        商品细节                                            购物车
 ![Image text](https://raw.githubusercontent.com/tzyzst/supermall/main/src/display/details.png)
