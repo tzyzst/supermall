@@ -1,5 +1,5 @@
 # supermall
-# this project from coderwhy !
+## this project from coderwhy !
                          首页                                               商品
 ![Image text](https://raw.githubusercontent.com/tzyzst/supermall/main/src/display/home.png) 
 ![Image text](https://raw.githubusercontent.com/tzyzst/supermall/main/src/display/goods.png)
